@@ -51,13 +51,28 @@ class HomeController extends Controller
 //        }
 //    }
 
-    // Row id
+//    // Row id
+//    public function getUsers()
+//    {
+//
+//            return DataTables::of(User::query())->setRowId(function ($user) {
+//                    return $user->id;
+//                })->make(true);
+//
+//    }
+
+    // Row Attribute
     public function getUsers()
     {
 
-            return DataTables::of(User::query())->setRowId(function ($user) {
-                    return $user->id;
-                })->make(true);
+        return DataTables::of(User::query())
+            ->setRowAttr([
+                'align' => 'center',
+            ])
+            ->make(true);
 
     }
+
+
+
 }
