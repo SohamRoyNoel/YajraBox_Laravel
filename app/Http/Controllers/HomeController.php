@@ -30,8 +30,24 @@ class HomeController extends Controller
     }
 
     // For general datatable
+    /*
+        public function getUsers()
+        {
+            return Datatables::of(User::query())->make(true);
+        }
+    */
+
+    // Row Editing
     public function getUsers()
     {
-        return Datatables::of(User::query())->make(true);
+        try {
+            return DataTables::of(User::query())
+//                ->setRowClass(function ($user) {
+//                    return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
+//                })
+                ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
+                ->make(true);
+        } catch (\Exception $e) {
+        }
     }
 }
