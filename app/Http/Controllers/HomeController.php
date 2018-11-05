@@ -97,6 +97,17 @@ class HomeController extends Controller
             ->addColumn('intro', function(User $user) {
                 return 'Hi ' . $user->name . '!';
             })
-            ->make(true);
+
+            // Edit column - CLOSURE
+            ->editColumn('created_at', function(User $user) {
+                return $user->created_at->diffForHumans();
+            })
+
+            // Edit column - VIEW :: you need to put this attribute at home.blade & app.blade as well
+                // 2. It only shows thr RAW HTML code; instead of he HTML CONTROL
+                // 3. SOLUTION -> RAW Columns
+            ->editColumn('actions', 'columnBladePage')
+            ->rawColumns(['actions', 'action']) // It can accept array of COLUMNS
+            ->toJson();
     }
 }
