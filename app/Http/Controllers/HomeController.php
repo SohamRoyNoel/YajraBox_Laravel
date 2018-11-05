@@ -73,18 +73,30 @@ class HomeController extends Controller
 //
 //    }
 
-    // Row Data
-    // make changes on existing data from DB :: Dynamically on Table
-    public function getUsers()
+//    // Row Data
+//    // make changes on existing data from DB :: Dynamically on Table
+//    public function getUsers()
+//    {
+//
+//        return DataTables::of(User::query())
+//            ->setRowData([
+//                'data-id' => 'row-{{$id}}',
+//                'data-name' => 'row-{{$name}}',
+//            ])
+//            ->make(true);
+//    }
+//    // Dynamic changes will be done on .blade page :: where INITIATIVES of yajra is defined via JQUERY (app.blade)
+
+    // COLUMN
+
+    // Add Columns
+        public function getUsers()
     {
 
         return DataTables::of(User::query())
-            ->setRowData([
-                'data-id' => 'row-{{$id}}',
-                'data-name' => 'row-{{$name}}',
-            ])
+            ->addColumn('intro', function(User $user) {
+                return 'Hi ' . $user->name . '!';
+            })
             ->make(true);
     }
-    // Dynamic changes will be done on .blade page :: where INITIATIVES of yajra is defined via JQUERY (app.blade)
-
 }

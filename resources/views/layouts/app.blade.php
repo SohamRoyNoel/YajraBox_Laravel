@@ -91,8 +91,9 @@
             ajax: '{!! route('get.users') !!}',
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'DT_RowData.data-name', name: 'name' },
+                { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
+                { data: 'intro', name: 'intro' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' }
             ]

@@ -19,6 +19,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Intro</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
                             </tr>
