@@ -37,17 +37,27 @@ class HomeController extends Controller
         }
     */
 
-    // Row Editing
+//    // Row Editing
+//    public function getUsers()
+//    {
+//        try {
+//            return DataTables::of(User::query())
+////                ->setRowClass(function ($user) {
+////                    return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
+////                })
+//                ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
+//                ->make(true);
+//        } catch (\Exception $e) {
+//        }
+//    }
+
+    // Row id
     public function getUsers()
     {
-        try {
-            return DataTables::of(User::query())
-//                ->setRowClass(function ($user) {
-//                    return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
-//                })
-                ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
-                ->make(true);
-        } catch (\Exception $e) {
-        }
+
+            return DataTables::of(User::query())->setRowId(function ($user) {
+                    return $user->id;
+                })->make(true);
+
     }
 }
